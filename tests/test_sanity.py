@@ -1,4 +1,4 @@
-from env_foundations import hello
+from env_foundations.hello import hello
 
 
 def test_hello():
