@@ -1,0 +1,39 @@
+[tool.poetry]
+name = "env-foundations"
+version = "0.1.0"
+description = "Environment scaffold for DS roadmap projects (Poetry + pre-commit + CI)"
+authors = ["rahulgowda1999 <rahulgowda20799@gmail.com>"]
+readme = "README.md"
+
+# Tell Poetry where the package code lives
+packages = [{ include = "env_foundations", from = "src" }]
+
+[tool.poetry.dependencies]
+# keep this broad so local + CI (3.11) both work
+python = ">=3.11,<3.13"
+numpy = "^2.3.3"
+pandas = "^2.3.2"
+matplotlib = "^3.10.0"
+scikit-learn = "^1.7.0"
+jupyterlab = "^4.4.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.4.2"
+black = "^25.9.0"
+ruff = "^0.13.2"
+pre-commit = "^4.3.0"
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+lint.select = ["E","F","I","UP","B","W"]
+# keep compatible with black + allow longer lines in notebooks if needed
+lint.ignore = ["E203","E501"]
+
+[build-system]
+requires = ["poetry-core>=1.9.0"]
+build-backend = "poetry.core.masonry.api"
